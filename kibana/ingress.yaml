@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kibana
+  labels:
+    app: kibana
+  annotations:
+spec:
+  tls:
+  - hosts:
+    - your.own.url.com
+    secretName: your.own.tls.secret
+  rules:
+  - host: your.own.url.com
+    http:
+      paths:
+      - backend:
+          serviceName: kibana
+          servicePort: 5601
+        path: /
